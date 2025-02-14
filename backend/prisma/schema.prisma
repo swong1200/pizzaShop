@@ -14,9 +14,31 @@ datasource db {
 }
 
 model User {
-    id        Int    @id @default(autoincrement())
+    id        Int     @id @default(autoincrement())
     firstName String
     lastName  String
     address   String
-    phone     Int
+    phone     String
+    Pizza     Pizza[]
+}
+
+model Pizza {
+    id          Int     @id @default(autoincrement())
+    size        String
+    pepperoni   Boolean @default(false)
+    sausage     Boolean @default(false)
+    meatball    Boolean @default(false)
+    salami      Boolean @default(false)
+    mushroom    Boolean @default(false)
+    jalapeno    Boolean @default(false)
+    olive       Boolean @default(false)
+    garlic      Boolean @default(false)
+    onion       Boolean @default(false)
+    greenPepper Boolean @default(false)
+    pineapple   Boolean @default(false)
+    basil       Boolean @default(false)
+    tomato      Boolean @default(false)
+    anchovy     Boolean @default(false)
+    consumer    User    @relation(fields: [userId], references: [id])
+    userId      Int
 }
